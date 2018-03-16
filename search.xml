@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MinDoc接口管理文档]]></title>
+    <url>%2F2018%2F03%2F16%2FMinDoc%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E6%96%87%E6%A1%A3%2F</url>
+    <content type="text"><![CDATA[需求介绍项目组内部需要一款简单实用的项目接口文档管理和分享的系统.功能: 用来存储日常接口文档,数据库字典,手册说明等文档; 需要内置项目管理,用户管理,权限管理等功能,满足大部分中小团队的文档管理需求. MinDoc在Windows下的安装1 下载可执行文件请从 https://github.com/lifei6671/mindoc/releases 下载最新版的可执行文件，一般文件名为 mindoc_windows_amd.zip . 2 解压压缩包请将刚才下载的文件解压，推荐使用好压解压到任意目录。建议不用用中文目录名称。 3 创建数据库在这里采用sqlite数据库,将 conf/app.conf 中的数据库配置成如下,系统会自动创建 sqlite 数据库文件：12db_adapter=sqlite3db_database=mindoc_db 4 配置数据库 配置文件: 12db_adapter=sqlite3db_database=./conf/mindoc_db 初始化数据库: 1mindoc_windows_amd64.exe install 自动生成管理员账号:admin 密码:123456 5 启动程序双击mindoc_windows_amd64.exe,访问 http://127.0.0.1:8181 6 导出pdf 安装whtmltopdf,下载解压到目录;whtmltopdf的下载地址:https://wkhtmltopdf.org/downloads.html。下载后,安装即可; 配置文件,指定whtmltopdf路径: 1wkhtmltopdf=C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe 7 安装go环境(如果电脑不存在go环境)下载地址:https://github.com/lifei6671/mindoc/blob/master/lib/time/zoneinfo.zip?raw=true设置环境变量:键名为 ZONEINFO，值为MinDoc跟目录下的/lib/time/zoneinfo.zip 绝对路径。]]></content>
+      <categories>
+        <category>开发工具</category>
+      </categories>
+      <tags>
+        <tag>接口</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[服务号开发]]></title>
     <url>%2F2018%2F03%2F15%2F%E6%9C%8D%E5%8A%A1%E5%8F%B7%E5%BC%80%E5%8F%91%2F</url>
     <content type="text"><![CDATA[服务号后台配置 公众号后台 域名备案 DNS域名解析 前端开发后端开发部署]]></content>
