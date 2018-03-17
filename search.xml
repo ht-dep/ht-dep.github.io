@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Pycharm远程调试]]></title>
+    <url>%2F2018%2F03%2F18%2FPycharm%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95%2F</url>
+    <content type="text"><![CDATA[配置远程环境配置SFTP进行代码同步配置自动同步CRTL+S配置远程SSH比较代码差异如何选取历史远程环境]]></content>
+      <categories>
+        <category>基础设施</category>
+      </categories>
+      <tags>
+        <tag>开发工具</tag>
+        <tag>pycharm</tag>
+        <tag>远程调试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[T470拆机]]></title>
     <url>%2F2018%2F03%2F18%2FT470%E6%8B%86%E6%9C%BA%2F</url>
     <content type="text"><![CDATA[拆硬盘 注意这个硬盘是要拽住那个揪揪，晃晃整个就起来了 那个跟硬盘对口的接口是可活动的（一根线，小心别拽断了）（不需要拆喇叭） 拆机时注意，去卡扣时，是电脑反着，先从左右两面或下面开始，先用手指挤开，再卡片推过去（电脑盖朝下）（不要从电池那面开）。 进入Bios 开机按F1（不按FN） 设置U盘启动时注意，按F9重置后，手动选下面的保存。不要按F10保存（否则会开机恢复原来的设置） U盘启动：开机后按F12（不需要FN） WinPE版本 Cpu7系列只允许装win10，因此WINPE也只能用win10核心的 PE使用WEPE 操作系统-win10VL版本 VL版本的系统允许通过KMS方式激活 系统下载在MSDN上下载 小新i2000拆机 显示屏所在面在下面，就是反放 从usb口开始，用银行卡慢慢刷]]></content>
