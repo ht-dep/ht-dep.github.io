@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Pycharm开发Micropython]]></title>
     <url>%2F2018%2F03%2F17%2FPycharm%E5%BC%80%E5%8F%91Micropython%2F</url>
-    <content type="text"><![CDATA[安装插件micropython 配置代码提示 配好后会提示mpy的语法 把代码转换为mpy代码 pycharm无法进程mpy的远程调试，只能将代码直接传进开发板 备注： hexo的图片路径：/images/xxx.png]]></content>
+    <content type="text"><![CDATA[安装插件micropython 配置代码提示 配好后会提示mpy的语法 把代码转换为mpy代码 pycharm无法进程mpy的远程调试，只能将代码直接传进开发板 备注 hexo的图片路径：/images/xxx.png]]></content>
       <categories>
         <category>Pycharm</category>
       </categories>
