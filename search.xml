@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MarkDown与极简图床]]></title>
+    <url>%2F2018%2F03%2F18%2FMarkDown%E4%B8%8E%E6%9E%81%E7%AE%80%E5%9B%BE%E5%BA%8A%2F</url>
+    <content type="text"><![CDATA[安装极简图床可以同谷歌store下载，也可以手动安装 选择图床 图床包括三种： 阿里云OOS 七牛 新浪微博 作者在这里选用的阿里云和新浪微博，当然新浪微博是免费的（不能保证后期会不会禁掉这个功能），在这里推荐使用阿里云（收费）。 新浪微博这个最简单，只需要在网页上登录下微博即可，本质应该是通过爬虫的方式集成的接口，以后有可能被封。 阿里云OOS据说前几年推广时，有50G免费，现在貌似没有了。作者在这里先买了一年40G的套餐。 登录阿里云开通对象存储OOS建 Bucket，按要求输入 Bucket 名称，选择好区域后记录下 Endpoint 备用，读写权限选择“公共读” 在控制台右上角选择 accesskyes，选择“继续使用AccessKey” 点击 “创建 Access Key”，创建完成后记录下 Access Key ID 和 Key Secret 备用 回到极简图床网站，点击右上角进行设置，选择阿里云 OSS 选项卡，按要求填写 Bucket、Endpoint（第一步创建时所得），Access Key ID 以及 Key Secret （上面第三步中获取），完成后保存，就可以将图片存储到你的阿里云 OSS 上了。 使用极简图床获取MarkDown需要的图片地址 复制到文章里即可]]></content>
+      <categories>
+        <category>基础设施</category>
+      </categories>
+      <tags>
+        <tag>图床</tag>
+        <tag>极简图床</tag>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[公众号发布文章]]></title>
     <url>%2F2018%2F03%2F18%2F%E5%85%AC%E4%BC%97%E5%8F%B7%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0%2F</url>
     <content type="text"><![CDATA[登录公众号后台创建素材管理–素材管理，点击新建图文素材使用秀米编辑器进行排版 登录后，添加新的图文 选择模板，进行排版，并复制 复制到刚建的图文素材CTRL+V即可复制到新建图文 稍作修改，添加封面，保存 推送文章 进入页面模板 创建模板，添加素材 发布]]></content>
@@ -31,8 +44,8 @@
         <category>基础设施</category>
       </categories>
       <tags>
-        <tag>开发工具</tag>
         <tag>pycharm</tag>
+        <tag>开发工具</tag>
         <tag>远程调试</tag>
       </tags>
   </entry>
