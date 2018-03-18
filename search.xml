@@ -44,8 +44,8 @@
         <category>基础设施</category>
       </categories>
       <tags>
-        <tag>开发工具</tag>
         <tag>pycharm</tag>
+        <tag>开发工具</tag>
         <tag>远程调试</tag>
       </tags>
   </entry>
@@ -68,8 +68,8 @@
         <category>基础设施</category>
       </categories>
       <tags>
-        <tag>pycharm</tag>
         <tag>micropython</tag>
+        <tag>pycharm</tag>
       </tags>
   </entry>
   <entry>
