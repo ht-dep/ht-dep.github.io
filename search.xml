@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[公众号发布文章]]></title>
+    <url>%2F2018%2F03%2F18%2F%E5%85%AC%E4%BC%97%E5%8F%B7%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0%2F</url>
+    <content type="text"><![CDATA[登录公众号后台创建素材管理–素材管理，点击新建图文素材使用秀米编辑器进行排版 登录后，添加新的图文 选择模板，进行排版，并复制 复制到刚建的图文素材CTRL+V即可复制到新建图文 稍作修改，添加封面，保存 推送文章 进入页面模板 创建模板，添加素材 发布]]></content>
+      <categories>
+        <category>公众号</category>
+      </categories>
+      <tags>
+        <tag>排版</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[itchatmp安装报future的error]]></title>
+    <url>%2F2018%2F03%2F18%2Fitchatmp%E5%AE%89%E8%A3%85%E6%8A%A5future%E7%9A%84error%2F</url>
+    <content type="text"><![CDATA[itchatmp安装时报future无法在python3上安装最新版的future不支持python3运行 解决方法指定future版本为3.1.11pip3 install futures==3.1.1；pip3 install itchatmp]]></content>
+      <categories>
+        <category>公众号</category>
+      </categories>
+      <tags>
+        <tag>公众号</tag>
+        <tag>itchatmp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Pycharm远程调试]]></title>
     <url>%2F2018%2F03%2F18%2FPycharm%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95%2F</url>
-    <content type="text"><![CDATA[配置远程环境配置SFTP进行代码同步配置自动同步CRTL+S配置远程SSH比较代码差异如何选取历史远程环境]]></content>
+    <content type="text"><![CDATA[配置远程环境 配置SFTP进行代码同步 配置自动同步CRTL+S 远程SSH控制台 比较代码差异Brower Remote Host可以直接查看远程服务器的代码比较本地开发目录与远程指定目录的代码差异 切换历史远程环境]]></content>
       <categories>
         <category>基础设施</category>
       </categories>
@@ -29,10 +52,11 @@
     <url>%2F2018%2F03%2F17%2FPycharm%E5%BC%80%E5%8F%91Micropython%2F</url>
     <content type="text"><![CDATA[安装插件micropython 配置代码提示 配好后会提示mpy的语法 把代码转换为mpy代码 pycharm无法进程mpy的远程调试，只能将代码直接传进开发板 备注 hexo的图片路径：/images/xxx.png]]></content>
       <categories>
-        <category>Pycharm</category>
+        <category>基础设施</category>
       </categories>
       <tags>
         <tag>micropython</tag>
+        <tag>pycharm</tag>
       </tags>
   </entry>
   <entry>
