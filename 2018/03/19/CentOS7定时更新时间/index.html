@@ -110,7 +110,7 @@
 <meta property="og:description" content="同步时间1ntpdate xx.xxx.xx.x 测试用的两个时间服务器地址：  ntpdate 223.65.211.42  — 慢一分钟 ntpdate 202.112.31.197 — 正常  添加cron开机自启动 在/etc/rc.d/rc.local里加入(如果没有执行权限，需要chmod +x rc.local)  12/bin/systemctl start crond.servi">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/b4b5379egy1fpifio6yvuj20ny09yt9j.jpg">
-<meta property="og:updated_time" content="2018-03-19T13:38:58.740Z">
+<meta property="og:updated_time" content="2018-03-19T13:41:00.625Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS7定时更新时间">
 <meta name="twitter:description" content="同步时间1ntpdate xx.xxx.xx.x 测试用的两个时间服务器地址：  ntpdate 223.65.211.42  — 慢一分钟 ntpdate 202.112.31.197 — 正常  添加cron开机自启动 在/etc/rc.d/rc.local里加入(如果没有执行权限，需要chmod +x rc.local)  12/bin/systemctl start crond.servi">
@@ -405,12 +405,9 @@
 <li><p>执行命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>创建定时任务<br>vi 命令执行插入</p>
+<li><p>创建定时任务<br>vi 命令执行插入<br>每小时的15分钟 定时执行更新时间命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">15 * * * * ntpdate 202.112.31.197</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>每小时的15分钟 定时执行更新时间命令</p>
-<ol>
 <li><p>查看定时任务</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -l</span><br></pre></td></tr></table></figure>
 </li>
