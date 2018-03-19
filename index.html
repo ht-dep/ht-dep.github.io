@@ -385,8 +385,8 @@
       
         
           
-          注意nginx配置文件里，命令不要跟；挨一块了安装NGINX跟python的编译安装一摸一样12345tar -xf nginx-1.13.9.tar.gzcd nginx-1.13.9/./configure --prefix=/usr/nginxmakemake install
-修改配置文件禁止
+          安装NGINX跟python的编译安装一摸一样12345tar -xf nginx-1.13.9.tar.gzcd nginx-1.13.9/./configure --prefix=/usr/nginxmakemake install
+修改配置文件禁止后台启动，否则supervisor无法监控，出
           ...
           <!--noindex-->
           <div class="post-button text-center">
