@@ -101,20 +101,20 @@
 
   
 
-<meta name="description" content="同步时间1ntpdate xx.xxx.xx.x 测试用的两个时间服务器地址：  ntpdate 223.65.211.42  — 慢一分钟 ntpdate 202.112.31.197 — 正常  添加cron开机自启动 在/etc/rc.d/rc.local里加入(如果没有执行权限，需要chmod +x rc.local)  1/sbin/service crond start  创建定时任务">
+<meta name="description" content="同步时间1ntpdate xx.xxx.xx.x 测试用的两个时间服务器地址：  ntpdate 223.65.211.42  — 慢一分钟 ntpdate 202.112.31.197 — 正常  添加cron开机自启动 在/etc/rc.d/rc.local里加入(如果没有执行权限，需要chmod +x rc.local)  12/bin/systemctl start crond.servi">
 <meta name="keywords" content="定时任务,更新时间">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS7定时更新时间">
 <meta property="og:url" content="http://7ht.gitee.io/2018/03/19/CentOS7定时更新时间/index.html">
 <meta property="og:site_name" content="HonTu&#39;s Notes">
-<meta property="og:description" content="同步时间1ntpdate xx.xxx.xx.x 测试用的两个时间服务器地址：  ntpdate 223.65.211.42  — 慢一分钟 ntpdate 202.112.31.197 — 正常  添加cron开机自启动 在/etc/rc.d/rc.local里加入(如果没有执行权限，需要chmod +x rc.local)  1/sbin/service crond start  创建定时任务">
+<meta property="og:description" content="同步时间1ntpdate xx.xxx.xx.x 测试用的两个时间服务器地址：  ntpdate 223.65.211.42  — 慢一分钟 ntpdate 202.112.31.197 — 正常  添加cron开机自启动 在/etc/rc.d/rc.local里加入(如果没有执行权限，需要chmod +x rc.local)  12/bin/systemctl start crond.servi">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/b4b5379egy1fpifio6yvuj20ny09yt9j.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/b4b5379egy1fpifnf61w0j20p404w3yj.jpg">
-<meta property="og:updated_time" content="2018-03-19T13:18:33.545Z">
+<meta property="og:updated_time" content="2018-03-19T13:27:07.098Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS7定时更新时间">
-<meta name="twitter:description" content="同步时间1ntpdate xx.xxx.xx.x 测试用的两个时间服务器地址：  ntpdate 223.65.211.42  — 慢一分钟 ntpdate 202.112.31.197 — 正常  添加cron开机自启动 在/etc/rc.d/rc.local里加入(如果没有执行权限，需要chmod +x rc.local)  1/sbin/service crond start  创建定时任务">
+<meta name="twitter:description" content="同步时间1ntpdate xx.xxx.xx.x 测试用的两个时间服务器地址：  ntpdate 223.65.211.42  — 慢一分钟 ntpdate 202.112.31.197 — 正常  添加cron开机自启动 在/etc/rc.d/rc.local里加入(如果没有执行权限，需要chmod +x rc.local)  12/bin/systemctl start crond.servi">
 <meta name="twitter:image" content="https://ws1.sinaimg.cn/large/b4b5379egy1fpifio6yvuj20ny09yt9j.jpg">
 
 
@@ -400,7 +400,7 @@
 <h1 id="添加cron开机自启动"><a href="#添加cron开机自启动" class="headerlink" title="添加cron开机自启动"></a>添加cron开机自启动</h1><blockquote>
 <p>在/etc/rc.d/rc.local里加入(如果没有执行权限，需要chmod +x rc.local)</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/service crond start</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/bin/systemctl start crond.service   或</span><br><span class="line">/bin/systemctl start crond.service （Centos7推荐）</span><br></pre></td></tr></table></figure>
 <p><img src="https://ws1.sinaimg.cn/large/b4b5379egy1fpifio6yvuj20ny09yt9j.jpg" alt=""></p>
 <h1 id="创建定时任务"><a href="#创建定时任务" class="headerlink" title="创建定时任务"></a>创建定时任务</h1><ol>
 <li>执行命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
