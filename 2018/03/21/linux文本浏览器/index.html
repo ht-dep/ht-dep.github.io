@@ -100,27 +100,29 @@
 
 
   
-  <meta name="keywords" content="Hexo, NexT" />
 
-
-<meta name="description" content="修改Linux硬件时钟查看时钟： timedatectl硬件时钟改为本地时间：  Centos7 1timedatectl set-local-rtcl  Debian9 1timedatectl set-timezone Asia/Shangha   定时同步时间 修改开机启动，添加定时任务在/etc/rc.d/rc.local里加入(如果没有执行权限，需要chmod +x rc.local)：">
+<meta name="description" content="安装lynx–彩色yum install lynx -y  使用说明比较明确   安装links–黑白yum install links -y  比较早，c语言编写，Enter键，  鼠标Click，Esc键、Ctrl + C 退出  访问地址lynx https://pingendo.com">
+<meta name="keywords" content="文本浏览器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CentOS7修改时区">
-<meta property="og:url" content="http://7ht.gitee.io/2018/03/17/CentOS7修改时区/index.html">
+<meta property="og:title" content="linux文本浏览器">
+<meta property="og:url" content="http://7ht.gitee.io/2018/03/21/linux文本浏览器/index.html">
 <meta property="og:site_name" content="HonTu&#39;s Notes">
-<meta property="og:description" content="修改Linux硬件时钟查看时钟： timedatectl硬件时钟改为本地时间：  Centos7 1timedatectl set-local-rtcl  Debian9 1timedatectl set-timezone Asia/Shangha   定时同步时间 修改开机启动，添加定时任务在/etc/rc.d/rc.local里加入(如果没有执行权限，需要chmod +x rc.local)：">
+<meta property="og:description" content="安装lynx–彩色yum install lynx -y  使用说明比较明确   安装links–黑白yum install links -y  比较早，c语言编写，Enter键，  鼠标Click，Esc键、Ctrl + C 退出  访问地址lynx https://pingendo.com">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-19T13:00:50.743Z">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/b4b5379egy1fpk7008fqbj21560redij.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/b4b5379egy1fpk70mqo82j214t0hc75p.jpg">
+<meta property="og:updated_time" content="2018-03-21T01:47:23.472Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CentOS7修改时区">
-<meta name="twitter:description" content="修改Linux硬件时钟查看时钟： timedatectl硬件时钟改为本地时间：  Centos7 1timedatectl set-local-rtcl  Debian9 1timedatectl set-timezone Asia/Shangha   定时同步时间 修改开机启动，添加定时任务在/etc/rc.d/rc.local里加入(如果没有执行权限，需要chmod +x rc.local)：">
+<meta name="twitter:title" content="linux文本浏览器">
+<meta name="twitter:description" content="安装lynx–彩色yum install lynx -y  使用说明比较明确   安装links–黑白yum install links -y  比较早，c语言编写，Enter键，  鼠标Click，Esc键、Ctrl + C 退出  访问地址lynx https://pingendo.com">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/b4b5379egy1fpk7008fqbj21560redij.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://7ht.gitee.io/2018/03/17/CentOS7修改时区/"/>
+  <link rel="canonical" href="http://7ht.gitee.io/2018/03/21/linux文本浏览器/"/>
 
 
 
@@ -130,7 +132,7 @@
   };
 </script>
 
-  <title>CentOS7修改时区 | HonTu's Notes</title>
+  <title>linux文本浏览器 | HonTu's Notes</title>
   
 
 
@@ -297,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://7ht.gitee.io/2018/03/17/CentOS7修改时区/">
+    <link itemprop="mainEntityOfPage" href="http://7ht.gitee.io/2018/03/21/linux文本浏览器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HT">
@@ -314,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CentOS7修改时区</h1>
+          <h1 class="post-title" itemprop="name headline">linux文本浏览器</h1>
         
 
         <div class="post-meta">
@@ -326,7 +328,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-17T19:55:50+08:00">2018-03-17</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T09:44:54+08:00">2018-03-21</time>
             
 
             
@@ -389,25 +391,16 @@
       
 
       
-        <h2 id="修改Linux硬件时钟"><a href="#修改Linux硬件时钟" class="headerlink" title="修改Linux硬件时钟"></a>修改Linux硬件时钟</h2><p><strong>查看时钟：</strong> timedatectl<br><strong>硬件时钟改为本地时间：</strong></p>
-<ol>
-<li><p>Centos7</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timedatectl set-local-rtcl</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Debian9</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timedatectl set-timezone Asia/Shangha</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="定时同步时间"><a href="#定时同步时间" class="headerlink" title="定时同步时间"></a>定时同步时间</h2><ol>
-<li><p>修改开机启动，添加定时任务<br>在/etc/rc.d/rc.local里加入(如果没有执行权限，需要chmod +x rc.local)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/service crond start</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建定时任务,比如：每小时的15分钟 更新时间一次<br>执行 crontab -e ,添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">15 * * * * ntpdate 10.17.251.1</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看定时任务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab  -l</span><br></pre></td></tr></table></figure></li>
-</ol>
+        <h1 id="安装lynx–彩色"><a href="#安装lynx–彩色" class="headerlink" title="安装lynx–彩色"></a>安装lynx–彩色</h1><p>yum install lynx -y</p>
+<blockquote>
+<p>使用说明比较明确</p>
+</blockquote>
+<p><img src="https://ws1.sinaimg.cn/large/b4b5379egy1fpk7008fqbj21560redij.jpg" alt=""></p>
+<h1 id="安装links–黑白"><a href="#安装links–黑白" class="headerlink" title="安装links–黑白"></a>安装links–黑白</h1><p>yum install links -y</p>
+<blockquote>
+<p>比较早，c语言编写，Enter键，  鼠标Click，Esc键、Ctrl + C 退出<br><img src="https://ws1.sinaimg.cn/large/b4b5379egy1fpk70mqo82j214t0hc75p.jpg" alt=""></p>
+</blockquote>
+<h1 id="访问地址"><a href="#访问地址" class="headerlink" title="访问地址"></a>访问地址</h1><p>lynx <a href="https://pingendo.com" target="_blank" rel="noopener">https://pingendo.com</a></p>
 
       
     </div>
@@ -427,12 +420,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2018/03/17/CentOS7修改时区/">CentOS7修改时区</a></p>
+  <p><span>本文标题:</span><a href="/2018/03/21/linux文本浏览器/">linux文本浏览器</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 HT 的个人博客">HT</a></p>
-  <p><span>发布时间:</span>2018年03月17日 - 19:03</p>
-  <p><span>最后更新:</span>2018年03月19日 - 21:03</p>
-  <p><span>原始链接:</span><a href="/2018/03/17/CentOS7修改时区/" title="CentOS7修改时区">http://7ht.gitee.io/2018/03/17/CentOS7修改时区/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://7ht.gitee.io/2018/03/17/CentOS7修改时区/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2018年03月21日 - 09:03</p>
+  <p><span>最后更新:</span>2018年03月21日 - 09:03</p>
+  <p><span>原始链接:</span><a href="/2018/03/21/linux文本浏览器/" title="linux文本浏览器">http://7ht.gitee.io/2018/03/21/linux文本浏览器/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://7ht.gitee.io/2018/03/21/linux文本浏览器/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
 </div>
@@ -467,6 +460,12 @@
 </div>
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/文本浏览器/" rel="tag"># 文本浏览器</a>
+          
+        </div>
+      
 
       
       
@@ -476,8 +475,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/17/什么是跨域/" rel="next" title="什么是跨域">
-                <i class="fa fa-chevron-left"></i> 什么是跨域
+              <a href="/2018/03/19/CentOS7部署supervisor和nginx/" rel="next" title="CentOS7部署supervisor和nginx">
+                <i class="fa fa-chevron-left"></i> CentOS7部署supervisor和nginx
               </a>
             
           </div>
@@ -485,10 +484,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/17/MarkDown语法/" rel="prev" title="MarkDown语法">
-                MarkDown语法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -738,7 +733,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改Linux硬件时钟"><span class="nav-number">1.</span> <span class="nav-text">修改Linux硬件时钟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定时同步时间"><span class="nav-number">2.</span> <span class="nav-text">定时同步时间</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装lynx–彩色"><span class="nav-number">1.</span> <span class="nav-text">安装lynx–彩色</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装links–黑白"><span class="nav-number">2.</span> <span class="nav-text">安装links–黑白</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#访问地址"><span class="nav-number">3.</span> <span class="nav-text">访问地址</span></a></li></ol></div>
             
 
           </div>
