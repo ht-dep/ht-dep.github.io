@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[CentOS7修改时区]]></title>
+    <url>%2F2018%2F03%2F22%2FCentOS7%E4%BF%AE%E6%94%B9%E6%97%B6%E5%8C%BA%2F</url>
+    <content type="text"><![CDATA[修改Linux硬件时钟查看时钟： timedatectl硬件时钟改为本地时间： Centos7 1timedatectl set-local-rtcl Debian9 1timedatectl set-timezone Asia/Shangha 定时同步时间 修改开机启动，添加定时任务在/etc/rc.d/rc.local里加入(如果没有执行权限，需要chmod +x rc.local)： 1/sbin/service crond start 创建定时任务,比如：每小时的15分钟 更新时间一次执行 crontab -e ,添加 115 * * * * ntpdate 10.17.251.1 查看定时任务 1crontab -l]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[linux文本浏览器]]></title>
     <url>%2F2018%2F03%2F21%2Flinux%E6%96%87%E6%9C%AC%E6%B5%8F%E8%A7%88%E5%99%A8%2F</url>
     <content type="text"><![CDATA[安装lynx–彩色yum install lynx -y 使用说明比较明确 安装links–黑白yum install links -y 比较早，c语言编写，Enter键， 鼠标Click，Esc键、Ctrl + C 退出 访问地址lynx https://pingendo.com]]></content>
@@ -135,14 +143,6 @@
     <title><![CDATA[MarkDown语法]]></title>
     <url>%2F2018%2F03%2F17%2FMarkDown%E8%AF%AD%E6%B3%95%2F</url>
     <content type="text"><![CDATA[标题标题是每篇文章都需要也是最常用的格式，在 Markdown 中，如果一段文字被定义为标题，只要在这段文字前加 # 号即可。 # 一级标题 ## 二级标题 ### 三级标题 以此类推，总共六级标题，建议在井号后加一个空格，这是最标准的 Markdown 语法。 列表熟悉 HTML 的同学肯定知道有序列表与无序列表的区别，在 Markdown 下，列表的显示只需要在文字前加上 - 或 * 即可变为无序列表，有序列表则直接在文字前加 1. 2. 3. 符号要和文字之间加上一个字符的空格。无序列表 列表1 列表2 列表3 有序列表 列表1 列表2 列表3 引用如果你需要引用一小段别处的句子，那么就要用引用的格式。 例如这样 只需要在文本前加入 &gt; 这种尖括号（大于号）即可 粗体与斜体Markdown 的粗体和斜体也非常简单，用两个 包含一段文本就是粗体的语法，用一个 包含一段文本就是斜体的语法。 例如：这里是粗体这里是斜体 表格表格是我觉得 Markdown 比较累人的地方，例子如下： 这种语法生成的表格如下： 参数名 类型 说明 args1 string 参数1 args2 [] 参数2 args3 string 参数3 代码框如果你是个程序猿，需要在文章里优雅的引用代码框，在 Markdown 下实现也非常简单，只需要用三个 把中间的代码包裹起来，如code`。 1234 &#123; &apos;result&apos;: &apos;error&apos;, &apos;reason&apos;:&apos;xxx&apos;&#125; 使用 tab 键即可缩进。 分割线分割线的语法只需要另起一行，连续输入三个星号 *** 即可。]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[CentOS7修改时区]]></title>
-    <url>%2F2018%2F03%2F17%2FCentOS7%E4%BF%AE%E6%94%B9%E6%97%B6%E5%8C%BA%2F</url>
-    <content type="text"><![CDATA[修改Linux硬件时钟查看时钟： timedatectl硬件时钟改为本地时间： Centos7 1timedatectl set-local-rtcl Debian9 1timedatectl set-timezone Asia/Shangha 定时同步时间 修改开机启动，添加定时任务在/etc/rc.d/rc.local里加入(如果没有执行权限，需要chmod +x rc.local)： 1/sbin/service crond start 创建定时任务,比如：每小时的15分钟 更新时间一次执行 crontab -e ,添加 115 * * * * ntpdate 10.17.251.1 查看定时任务 1crontab -l]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
   </entry>
   <entry>
     <title><![CDATA[什么是跨域]]></title>
