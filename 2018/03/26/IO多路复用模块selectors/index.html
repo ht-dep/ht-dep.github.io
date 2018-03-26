@@ -101,18 +101,20 @@
 
   
 
-<meta name="description" content="IO多路复用IO多路复用就是我们经常说的select epoll.select和epoll，好处是单个process就可以同时处理多个网络IO。基本原理是select\epoll会不断的轮询所负责的所有socket，当有某个socket数据到达了，就通知用户进程。1234567891011121314151617181920&amp;gt;在同一个线程里面，接收多个连接，select/epoll会把他们都">
+<meta name="description" content="IO多路复用IO多路复用就是我们经常说的select epoll.select和epoll，好处是单个process就可以同时处理多个网络IO。基本原理是select\epoll会不断的轮询所负责的所有socket，当有某个socket数据到达了，就通知用户进程。  在同一个线程里面，接收多个连接，select/epoll会把他们都监视起来，然后像拨开关一样，谁有数据就拨向谁，然后调用相应的代码处">
 <meta name="keywords" content="异步,selectors,事件驱动">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IO多路复用模块selectors">
 <meta property="og:url" content="http://7ht.gitee.io/2018/03/26/IO多路复用模块selectors/index.html">
 <meta property="og:site_name" content="HonTu&#39;s Notes">
-<meta property="og:description" content="IO多路复用IO多路复用就是我们经常说的select epoll.select和epoll，好处是单个process就可以同时处理多个网络IO。基本原理是select\epoll会不断的轮询所负责的所有socket，当有某个socket数据到达了，就通知用户进程。1234567891011121314151617181920&amp;gt;在同一个线程里面，接收多个连接，select/epoll会把他们都">
+<meta property="og:description" content="IO多路复用IO多路复用就是我们经常说的select epoll.select和epoll，好处是单个process就可以同时处理多个网络IO。基本原理是select\epoll会不断的轮询所负责的所有socket，当有某个socket数据到达了，就通知用户进程。  在同一个线程里面，接收多个连接，select/epoll会把他们都监视起来，然后像拨开关一样，谁有数据就拨向谁，然后调用相应的代码处">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-26T07:44:32.562Z">
+<meta property="og:image" content="http://p5rqvdp4f.bkt.clouddn.com/18-3-26/34234579.jpg">
+<meta property="og:updated_time" content="2018-03-26T07:55:05.056Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IO多路复用模块selectors">
-<meta name="twitter:description" content="IO多路复用IO多路复用就是我们经常说的select epoll.select和epoll，好处是单个process就可以同时处理多个网络IO。基本原理是select\epoll会不断的轮询所负责的所有socket，当有某个socket数据到达了，就通知用户进程。1234567891011121314151617181920&amp;gt;在同一个线程里面，接收多个连接，select/epoll会把他们都">
+<meta name="twitter:description" content="IO多路复用IO多路复用就是我们经常说的select epoll.select和epoll，好处是单个process就可以同时处理多个网络IO。基本原理是select\epoll会不断的轮询所负责的所有socket，当有某个socket数据到达了，就通知用户进程。  在同一个线程里面，接收多个连接，select/epoll会把他们都监视起来，然后像拨开关一样，谁有数据就拨向谁，然后调用相应的代码处">
+<meta name="twitter:image" content="http://p5rqvdp4f.bkt.clouddn.com/18-3-26/34234579.jpg">
 
 
 
@@ -388,45 +390,58 @@
       
 
       
-        <h1 id="IO多路复用"><a href="#IO多路复用" class="headerlink" title="IO多路复用"></a>IO多路复用</h1><p>IO多路复用就是我们经常说的select epoll.select和epoll，好处是单个process就可以同时处理多个网络IO。基本原理是select\epoll会不断的轮询所负责的所有socket，当有某个socket数据到达了，就通知用户进程。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&gt;在同一个线程里面，接收多个连接，select/epoll会把他们都监视起来，然后像拨开关一样，谁有数据就拨向谁，然后调用相应的代码处理。</span><br><span class="line"></span><br><span class="line">![](http://p5rqvdp4f.bkt.clouddn.com/18-3-26/34234579.jpg)</span><br><span class="line">&gt;当用户进程调用了select，那么整个进程会被block，而同时，kernel会“监视”所有select负责的socket，当任何一个socket中的数据准备好了，select就会返回。这个时候用户进程再调用read操作，将数据从kernel拷贝到用户进程。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">文件描述符fd:</span><br><span class="line">&gt;为打开文件的文件描述符，而每个进程都有一张文件描述符表，fd文件描述符就是这张表的索引，同样这张表中有一表项，该表项又是指向前面提到打开文件的file结构体，file结构体才是内核中用来描述文件属性的结构体。</span><br><span class="line">我们都知道在Linux下一切皆文件。当然设备也不例外，如果要对某个设备进行操作，就不得不打开此设备文件，打开文件就会获得该文件的文件描述符fd( file discriptor), 它就是一个很小的整数。</span><br><span class="line"></span><br><span class="line">IO多路复用：</span><br><span class="line">&gt;事件循环不断地调用select获取被激光的socket，然后根据获取socket对应的EventHandler，执行Handle_event函数即可。</span><br><span class="line">因为select()会阻塞，因此只能被称为异步阻塞IO，而非真正的异步IO；</span><br><span class="line"></span><br><span class="line">asyncio协程：</span><br><span class="line">&gt;根据事件驱动写的异步框架；</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Selectors主要对象</span><br><span class="line">类的层次结构</span><br></pre></td></tr></table></figure></p>
-<p>BaseSelector<br>+– SelectSelector<br>+– PollSelector<br>+– EpollSelector<br>+– DevpollSelector<br>+– KqueueSelector<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在下文中，**事件** 是指那些等待I/O 事件的给定的文件对象的位掩码（可读/可写）。它可以是下面的模块常量的组合︰</span><br></pre></td></tr></table></figure></p>
-<p>EVENT_READ     可读<br>EVENT_WRITE    可写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SelectorKey ---**文件对象+文件描述符fd，可读/可写事件，文件对象相关联的回调函数**</span><br><span class="line">&gt;是一个用来将文件对象关联到其底层文件描述符，选定的事件掩码和附加的数据的 namedtuple。它由 BaseSelector 的几种方法返回。</span><br></pre></td></tr></table></figure></p>
-<p>fileobj<br>注册的文件对象。</p>
-<p>fd<br>底层的文件描述符。</p>
-<p>events<br>该文件对象必须等待的事件。</p>
-<p>data<br>可选的与此文件对象相关联的不透明数据︰ 例如，这可以用来存储每个客户端的会话 id<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">***</span><br><span class="line"></span><br><span class="line">BaseSelector ---**多个文件对象的IO事件 的操作选择器类，返回类型是SelectorKey实例**</span><br><span class="line">- register(fileobj, events, data=None) ---**注册文件对象、可读/可写、回调函数，data就是回调函数**</span><br><span class="line">&gt;注册一个文件对象到选择器来监视它的 I/O 事件</span><br></pre></td></tr></table></figure></p>
-<p>fileobj 是要监视的文件对象。它可能是一个整型文件描述符或有 fileno() 方法的对象。events 是要监视的事件的位掩码。data 是不透明的对象。</p>
-<p>这返回一个新的 SelectorKey 实例，或者因无效的事件掩码或文件描述符抛出 ValueError 错误，或者如果文件对象已注册则抛出 KeyError 错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- unregister(fileobj) ---**注销文件对象**</span><br><span class="line">&gt;从选择器注销一个文件对象并移除对它的监视。文件对象被注销前应先关闭</span><br></pre></td></tr></table></figure></p>
-<p>fileobj 必须是先前注册过的文件对象。<br>这返回关联的 SelectorKey 实例，或者如果 fileobj未注册则抛出 KeyError错误。如果 fileobj 无效则抛出ValueError错误（例如，它没有 fileno() 方法或其 fileno() 方法有无效的返回值）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- select(timeout=None) ---**阻塞，等待触发事件列表里 文件对象被触发，返回文件对象列表**</span><br><span class="line">&gt;等到一些已注册的文件对象准备好或者超时。</span><br><span class="line">如果 timeout &gt; 0，会指定最长的等待时间，以秒为单位。如果 timeout &lt; = 0，调用不会阻塞并会报告目前准备好的文件对象。如果 timeout 是 None，调用将会阻塞直到一个监视的文件对象准备好。</span><br></pre></td></tr></table></figure></p>
-<p>这将返回一个以 (key, events) 元组为元素的列表，每一个元组代表一个准备好的文件对象。</p>
-<p>key 是对应于一个准备好的文件对象的SelectorKey 实例。events 是该文件对象上准备好的事件位掩码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 代码实现</span><br><span class="line">TCP Server</span><br></pre></td></tr></table></figure>
-<p>import selectors<br>import socket</p>
-<h1 id="默认选择器类型select-epoll，返回一个选择器；用来操作IO事件"><a href="#默认选择器类型select-epoll，返回一个选择器；用来操作IO事件" class="headerlink" title="默认选择器类型select/epoll，返回一个选择器；用来操作IO事件"></a>默认选择器类型select/epoll，返回一个选择器；用来操作IO事件</h1><p>sel = selectors.DefaultSelector()<br>sock = socket.socket()<br>sock.bind((‘127.0.0.1’, 8800))<br>sock.listen(5)<br>sock.setblocking(False)  # 设置socket为不阻塞</p>
-<p>##############################################################</p>
-<h1 id="子socket的handle处理方法–回调方法"><a href="#子socket的handle处理方法–回调方法" class="headerlink" title="子socket的handle处理方法–回调方法"></a>子socket的handle处理方法–回调方法</h1><h1 id="conn–文件对象子socket，mask–文件对象的事件（可读-可写）"><a href="#conn–文件对象子socket，mask–文件对象的事件（可读-可写）" class="headerlink" title="conn–文件对象子socket，mask–文件对象的事件（可读/可写）"></a>conn–文件对象子socket，mask–文件对象的事件（可读/可写）</h1><p>##############################################################<br>def read(conn, mask):<br>    try:<br>        data = conn.recv(1024)<br>        print(data.decode(‘utf-8’))<br>        print(“接收到：{}”.format(data))<br>        data2 = “xxxxxxx”<br>        print(“发送数据：{}”.format(data2))<br>        conn.send(data2.encode(“utf-8”))<br>    except Exception as e:</p>
-<pre><code># 注销掉事件：client断开时，出发异常将该子socket文件对象从IO事件列表移除（注销）
-sel.unregister(conn)
-</code></pre><p>##############################################################</p>
-<h1 id="主socket的handle方法–回调方法，主要aceept接收socket客户端，"><a href="#主socket的handle方法–回调方法，主要aceept接收socket客户端，" class="headerlink" title="主socket的handle方法–回调方法，主要aceept接收socket客户端，"></a>主socket的handle方法–回调方法，主要aceept接收socket客户端，</h1><h1 id="so–文件对象主socket，mask–文件对象的事件（可读-可写）"><a href="#so–文件对象主socket，mask–文件对象的事件（可读-可写）" class="headerlink" title="so–文件对象主socket，mask–文件对象的事件（可读/可写）"></a>so–文件对象主socket，mask–文件对象的事件（可读/可写）</h1><p>##############################################################</p>
-<p>def accept(so, mask):<br>    conn, addr = so.accept()<br>    print(“———–”, conn)</p>
-<pre><code># 注册子socket文件对象，事件，回调函数（上面的read方法）
-sel.register(conn, selectors.EVENT_READ, read)
-</code></pre><h1 id="注册主socket事件，事件（可读-可写），回调函数"><a href="#注册主socket事件，事件（可读-可写），回调函数" class="headerlink" title="注册主socket事件，事件（可读/可写），回调函数"></a>注册主socket事件，事件（可读/可写），回调函数</h1><p>sel.register(sock, selectors.EVENT_READ, accept)<br>while 1:<br>    print(“waiting…..”)</p>
-<pre><code># 阻塞，等待任意一个文件对象被触发，返回文件对象列表
-events = sel.select()
-
-for key, mask in events:
-    &apos;&apos;&apos;
-    遍历获得   被触发文件对象，并通过获取文件对象关联的回调方法，执行回调；
-    在这里可以进行过滤，判断不同的文件对象，是否进行不同的操作；
-    &apos;&apos;&apos;
-    print(key.fileobj) # 文件对象
-    print(key.fd) # 文件对象 关联的 文件描述符fd
-    func = key.data  # 文件对象关联的回调函数
-    obj = key.fileobj  # 文件对象
-    func(obj, mask)   # 执行回调方法
-</code></pre><p><code>`</code></p>
+        <h1 id="IO多路复用"><a href="#IO多路复用" class="headerlink" title="IO多路复用"></a>IO多路复用</h1><p>IO多路复用就是我们经常说的select epoll.select和epoll，好处是单个process就可以同时处理多个网络IO。基本原理是select\epoll会不断的轮询所负责的所有socket，当有某个socket数据到达了，就通知用户进程。</p>
+<blockquote>
+<p>在同一个线程里面，接收多个连接，select/epoll会把他们都监视起来，然后像拨开关一样，谁有数据就拨向谁，然后调用相应的代码处理。</p>
+</blockquote>
+<p><img src="http://p5rqvdp4f.bkt.clouddn.com/18-3-26/34234579.jpg" alt=""></p>
+<blockquote>
+<p>当用户进程调用了select，那么整个进程会被block，而同时，kernel会“监视”所有select负责的socket，当任何一个socket中的数据准备好了，select就会返回。这个时候用户进程再调用read操作，将数据从kernel拷贝到用户进程。</p>
+</blockquote>
+<p>文件描述符fd:</p>
+<blockquote>
+<p>为打开文件的文件描述符，而每个进程都有一张文件描述符表，fd文件描述符就是这张表的索引，同样这张表中有一表项，该表项又是指向前面提到打开文件的file结构体，file结构体才是内核中用来描述文件属性的结构体。<br>我们都知道在Linux下一切皆文件。当然设备也不例外，如果要对某个设备进行操作，就不得不打开此设备文件，打开文件就会获得该文件的文件描述符fd( file discriptor), 它就是一个很小的整数。</p>
+</blockquote>
+<p>IO多路复用：</p>
+<blockquote>
+<p>事件循环不断地调用select获取被激光的socket，然后根据获取socket对应的EventHandler，执行Handle_event函数即可。<br>因为select()会阻塞，因此只能被称为异步阻塞IO，而非真正的异步IO；</p>
+</blockquote>
+<p>asyncio协程：</p>
+<blockquote>
+<p>根据事件驱动写的异步框架；</p>
+</blockquote>
+<h1 id="Selectors主要对象"><a href="#Selectors主要对象" class="headerlink" title="Selectors主要对象"></a>Selectors主要对象</h1><p>类的层次结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BaseSelector</span><br><span class="line">+-- SelectSelector</span><br><span class="line">+-- PollSelector</span><br><span class="line">+-- EpollSelector</span><br><span class="line">+-- DevpollSelector</span><br><span class="line">+-- KqueueSelector</span><br></pre></td></tr></table></figure></p>
+<p>在下文中，<strong>事件</strong> 是指那些等待I/O 事件的给定的文件对象的位掩码（可读/可写）。它可以是下面的模块常量的组合︰<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">EVENT_READ	 可读</span><br><span class="line">EVENT_WRITE	可写</span><br></pre></td></tr></table></figure></p>
+<p>SelectorKey —<strong>文件对象+文件描述符fd，可读/可写事件，文件对象相关联的回调函数</strong></p>
+<blockquote>
+<p>是一个用来将文件对象关联到其底层文件描述符，选定的事件掩码和附加的数据的 namedtuple。它由 BaseSelector 的几种方法返回。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fileobj</span><br><span class="line">注册的文件对象。</span><br><span class="line"></span><br><span class="line">fd</span><br><span class="line">底层的文件描述符。</span><br><span class="line"></span><br><span class="line">events</span><br><span class="line">该文件对象必须等待的事件。</span><br><span class="line"></span><br><span class="line">data</span><br><span class="line">可选的与此文件对象相关联的不透明数据︰ 例如，这可以用来存储每个客户端的会话 id</span><br></pre></td></tr></table></figure>
+<hr>
+<p>BaseSelector —<strong>多个文件对象的IO事件 的操作选择器类，返回类型是SelectorKey实例</strong></p>
+<ul>
+<li>register(fileobj, events, data=None) —<strong>注册文件对象、可读/可写、回调函数，data就是回调函数</strong><blockquote>
+<p>注册一个文件对象到选择器来监视它的 I/O 事件</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fileobj 是要监视的文件对象。它可能是一个整型文件描述符或有 fileno() 方法的对象。events 是要监视的事件的位掩码。data 是不透明的对象。</span><br><span class="line"></span><br><span class="line">这返回一个新的 SelectorKey 实例，或者因无效的事件掩码或文件描述符抛出 ValueError 错误，或者如果文件对象已注册则抛出 KeyError 错误。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>unregister(fileobj) —<strong>注销文件对象</strong><blockquote>
+<p>从选择器注销一个文件对象并移除对它的监视。文件对象被注销前应先关闭</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fileobj 必须是先前注册过的文件对象。</span><br><span class="line">这返回关联的 SelectorKey 实例，或者如果 fileobj未注册则抛出 KeyError错误。如果 fileobj 无效则抛出ValueError错误（例如，它没有 fileno() 方法或其 fileno() 方法有无效的返回值）。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>select(timeout=None) —<strong>阻塞，等待触发事件列表里 文件对象被触发，返回文件对象列表</strong><blockquote>
+<p>等到一些已注册的文件对象准备好或者超时。<br>如果 timeout &gt; 0，会指定最长的等待时间，以秒为单位。如果 timeout &lt; = 0，调用不会阻塞并会报告目前准备好的文件对象。如果 timeout 是 None，调用将会阻塞直到一个监视的文件对象准备好。</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">这将返回一个以 (key, events) 元组为元素的列表，每一个元组代表一个准备好的文件对象。</span><br><span class="line"></span><br><span class="line">key 是对应于一个准备好的文件对象的SelectorKey 实例。events 是该文件对象上准备好的事件位掩码。</span><br></pre></td></tr></table></figure>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p>TCP Server</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">import selectors</span><br><span class="line">import socket</span><br><span class="line"></span><br><span class="line"># 默认选择器类型select/epoll，返回一个选择器；用来操作IO事件</span><br><span class="line">sel = selectors.DefaultSelector()</span><br><span class="line">sock = socket.socket()</span><br><span class="line">sock.bind((&apos;127.0.0.1&apos;, 8800))</span><br><span class="line">sock.listen(5)</span><br><span class="line">sock.setblocking(False)  # 设置socket为不阻塞</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">##############################################################</span><br><span class="line"># 子socket的handle处理方法--回调方法</span><br><span class="line"># conn--文件对象子socket，mask--文件对象的事件（可读/可写）</span><br><span class="line">##############################################################</span><br><span class="line">def read(conn, mask):</span><br><span class="line">    try:</span><br><span class="line">        data = conn.recv(1024)</span><br><span class="line">        print(data.decode(&apos;utf-8&apos;))</span><br><span class="line">        print(&quot;接收到：&#123;&#125;&quot;.format(data))</span><br><span class="line">        data2 = &quot;xxxxxxx&quot;</span><br><span class="line">        print(&quot;发送数据：&#123;&#125;&quot;.format(data2))</span><br><span class="line">        conn.send(data2.encode(&quot;utf-8&quot;))</span><br><span class="line">    except Exception as e:</span><br><span class="line">		# 注销掉事件：client断开时，出发异常将该子socket文件对象从IO事件列表移除（注销）</span><br><span class="line">        sel.unregister(conn)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">##############################################################</span><br><span class="line"># 主socket的handle方法--回调方法，主要aceept接收socket客户端，</span><br><span class="line"># so--文件对象主socket，mask--文件对象的事件（可读/可写）</span><br><span class="line">##############################################################</span><br><span class="line"></span><br><span class="line">def accept(so, mask):</span><br><span class="line">    conn, addr = so.accept()</span><br><span class="line">    print(&quot;-----------&quot;, conn)</span><br><span class="line">	# 注册子socket文件对象，事件，回调函数（上面的read方法）</span><br><span class="line">    sel.register(conn, selectors.EVENT_READ, read)</span><br><span class="line"></span><br><span class="line"># 注册主socket事件，事件（可读/可写），回调函数</span><br><span class="line">sel.register(sock, selectors.EVENT_READ, accept)</span><br><span class="line">while 1:</span><br><span class="line">    print(&quot;waiting.....&quot;)</span><br><span class="line">	# 阻塞，等待任意一个文件对象被触发，返回文件对象列表</span><br><span class="line">	events = sel.select()</span><br><span class="line"></span><br><span class="line">    for key, mask in events:</span><br><span class="line">		&apos;&apos;&apos;</span><br><span class="line">		遍历获得   被触发文件对象，并通过获取文件对象关联的回调方法，执行回调；</span><br><span class="line">		在这里可以进行过滤，判断不同的文件对象，是否进行不同的操作；</span><br><span class="line">		&apos;&apos;&apos;</span><br><span class="line">        print(key.fileobj) # 文件对象</span><br><span class="line">        print(key.fd) # 文件对象 关联的 文件描述符fd</span><br><span class="line">        func = key.data  # 文件对象关联的回调函数</span><br><span class="line">        obj = key.fileobj  # 文件对象</span><br><span class="line">        func(obj, mask)   # 执行回调方法</span><br></pre></td></tr></table></figure>
 <h1 id="IO模型"><a href="#IO模型" class="headerlink" title="IO模型"></a>IO模型</h1><p>IO 多路复用是5种I/O模型中的第3种，对各种模型讲个故事，描述下区别：<br>故事情节为：老李去买火车票，三天后买到一张退票。参演人员（老李，黄牛，售票员，快递员），往返车站耗费1小时。</p>
 <ol>
 <li><p>阻塞I/O模型<br>老李去火车站买票，排队三天买到一张退票。<br>耗费：在车站吃喝拉撒睡 3天，其他事一件没干。</p>
@@ -811,7 +826,7 @@ for key, mask in events:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IO多路复用"><span class="nav-number">1.</span> <span class="nav-text">IO多路复用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#默认选择器类型select-epoll，返回一个选择器；用来操作IO事件"><span class="nav-number">2.</span> <span class="nav-text">默认选择器类型select/epoll，返回一个选择器；用来操作IO事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#子socket的handle处理方法–回调方法"><span class="nav-number">3.</span> <span class="nav-text">子socket的handle处理方法–回调方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#conn–文件对象子socket，mask–文件对象的事件（可读-可写）"><span class="nav-number">4.</span> <span class="nav-text">conn–文件对象子socket，mask–文件对象的事件（可读/可写）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主socket的handle方法–回调方法，主要aceept接收socket客户端，"><span class="nav-number">5.</span> <span class="nav-text">主socket的handle方法–回调方法，主要aceept接收socket客户端，</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#so–文件对象主socket，mask–文件对象的事件（可读-可写）"><span class="nav-number">6.</span> <span class="nav-text">so–文件对象主socket，mask–文件对象的事件（可读/可写）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注册主socket事件，事件（可读-可写），回调函数"><span class="nav-number">7.</span> <span class="nav-text">注册主socket事件，事件（可读/可写），回调函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IO模型"><span class="nav-number">8.</span> <span class="nav-text">IO模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事件驱动模型（课外阅读）"><span class="nav-number">9.</span> <span class="nav-text">事件驱动模型（课外阅读）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IO多路复用"><span class="nav-number">1.</span> <span class="nav-text">IO多路复用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Selectors主要对象"><span class="nav-number">2.</span> <span class="nav-text">Selectors主要对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IO模型"><span class="nav-number">4.</span> <span class="nav-text">IO模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事件驱动模型（课外阅读）"><span class="nav-number">5.</span> <span class="nav-text">事件驱动模型（课外阅读）</span></a></li></ol></div>
             
 
           </div>

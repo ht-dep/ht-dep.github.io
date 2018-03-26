@@ -385,7 +385,9 @@
       
         
           
-          IO多路复用IO多路复用就是我们经常说的select epoll.select和epoll，好处是单个process就可以同时处理多个网络IO。基本原理是select\epoll会不断的轮询所负责的所有socket，当有某个socket数据到达了，就通知用户进程。123456789101112131
+          IO多路复用IO多路复用就是我们经常说的select epoll.select和epoll，好处是单个process就可以同时处理多个网络IO。基本原理是select\epoll会不断的轮询所负责的所有socket，当有某个socket数据到达了，就通知用户进程。
+
+在同一个线程里面，接收多个连接，
           ...
           <!--noindex-->
           <div class="post-button text-center">
