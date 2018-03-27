@@ -110,7 +110,7 @@
 <meta property="og:description" content="IO多路复用IO多路复用就是我们经常说的select epoll.select和epoll，好处是单个process就可以同时处理多个网络IO。基本原理是select\epoll会不断的轮询所负责的所有socket，当有某个socket数据到达了，就通知用户进程。  在同一个线程里面，接收多个连接，select/epoll会把他们都监视起来，然后像拨开关一样，谁有数据就拨向谁，然后调用相应的代码处">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://p5rqvdp4f.bkt.clouddn.com/18-3-26/34234579.jpg">
-<meta property="og:updated_time" content="2018-03-27T01:50:51.594Z">
+<meta property="og:updated_time" content="2018-03-27T01:53:33.195Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IO多路复用模块selectors">
 <meta name="twitter:description" content="IO多路复用IO多路复用就是我们经常说的select epoll.select和epoll，好处是单个process就可以同时处理多个网络IO。基本原理是select\epoll会不断的轮询所负责的所有socket，当有某个socket数据到达了，就通知用户进程。  在同一个线程里面，接收多个连接，select/epoll会把他们都监视起来，然后像拨开关一样，谁有数据就拨向谁，然后调用相应的代码处">
@@ -412,9 +412,9 @@
 </blockquote>
 <p>个人总结：</p>
 <ol>
-<li>将原先多个阻塞的方法，注册进IO事件循环里—手动写；</li>
-<li>手动循环，调用select()阻塞，等待被调用—手动写；</li>
-<li>然后内部kernel不停地轮询注册进IO事件的文件对象，一旦有文件对象调用，则触发2里的select()，执行下一步（本质就是往select阻塞的那个队列里塞了个数据）—内部自动，看不见；</li>
+<li>将不阻塞（原阻塞）的方法，注册进IO事件循环里—手动写；</li>
+<li>外部loop，调用select()阻塞loop，等待被调用（然后执行具体逻辑操作）—手动写；</li>
+<li>内部kernel不停地轮询注册进IO事件的文件对象，一旦有文件对象调用，则触发2里的select()，执行下一步（本质就是往select阻塞的那个队列里塞了个数据）—内部自动，看不见；</li>
 </ol>
 <h1 id="Selectors主要对象"><a href="#Selectors主要对象" class="headerlink" title="Selectors主要对象"></a>Selectors主要对象</h1><p>类的层次结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BaseSelector</span><br><span class="line">+-- SelectSelector</span><br><span class="line">+-- PollSelector</span><br><span class="line">+-- EpollSelector</span><br><span class="line">+-- DevpollSelector</span><br><span class="line">+-- KqueueSelector</span><br></pre></td></tr></table></figure></p>
 <p>在下文中，<strong>事件</strong> 是指那些等待I/O 事件的给定的文件对象的位掩码（可读/可写）。它可以是下面的模块常量的组合︰<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">EVENT_READ	 可读</span><br><span class="line">EVENT_WRITE	可写</span><br></pre></td></tr></table></figure></p>
