@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="HonTu&#39;s Notes">
 <meta property="og:description" content="python基础回顾演变先有类，再出现对象，对象生存在内存里; 理论1、一切都皆为对象，一切皆为对象的引用。2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。 变量1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。3、我们通常将变量名代表变量，变量值">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-28T04:39:46.034Z">
+<meta property="og:updated_time" content="2018-03-28T04:43:17.340Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python基础回顾（一）">
 <meta name="twitter:description" content="python基础回顾演变先有类，再出现对象，对象生存在内存里; 理论1、一切都皆为对象，一切皆为对象的引用。2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。 变量1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。3、我们通常将变量名代表变量，变量值">
@@ -395,7 +395,7 @@
 <h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>1、类就是类型：object是祖先类型。<br>2、类型对象是自动生成的，有且仅有一个类型对象实例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int、type(1)</span><br><span class="line">&gt;&gt;&gt; type(1) is int</span><br><span class="line">&gt;&gt;&gt; True</span><br></pre></td></tr></table></figure></p>
 <h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>1、对象：是类的实例。<br>2、存活的实例对象都有唯一的id。<br>3、每个实例对象都持有所属类型的指针。<br>4、在内存中的标准头，包括引用计数cnt、类型type、其他等。</p>
 <h3 id="基础数据（对象）类型："><a href="#基础数据（对象）类型：" class="headerlink" title="基础数据（对象）类型："></a>基础数据（对象）类型：</h3><p>1、不可变数据（对象）类型：string、tuple、numbers（int、float）<br>2、可变数据（对象）类型：list、dict</p>
-<h3 id="名字空间-namespace"><a href="#名字空间-namespace" class="headerlink" title="名字空间(namespace)"></a>名字空间(namespace)</h3><p><strong>是从名称到对象的映射。</strong><br><strong>名字空间不是创建的，我们看到的字典实际上是从Fast区域复制的相关信息。</strong><br>1、名字（变量名）、目标对象。</p>
+<h3 id="名字空间-namespace"><a href="#名字空间-namespace" class="headerlink" title="名字空间(namespace)"></a>名字空间(namespace)</h3><p><strong>是从名称到对象的映射。</strong><br><strong>局部名字空间：从Fast区域按需延迟复制的，静态作用域。</strong><br><strong>全局名字空间：模块直接用dict实现的，没有使用类似Fast的机制。</strong><br>1、名字（变量名）、目标对象。</p>
 <ul>
 <li>将变量（名字）与对象（内存里的）关联起来的容器。</li>
 <li>名字空间默认使用字典（dict）的数据结构。</li>
