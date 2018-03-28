@@ -103,17 +103,17 @@
   <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="python基础回顾演变先有类，再出现对象，对象生存在作用域; 理论1、一切都皆为对象，一切皆为对象的引用。2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。 变量1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。3、我们通常将变量名代表变量，变量值">
+<meta name="description" content="python基础回顾演变先有类，再出现对象，对象生存在命名空间; 理论1、一切都皆为对象，一切皆为对象的引用。2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。 变量1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。3、我们通常将变量名代表变量，变量">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python基础回顾（一）">
 <meta property="og:url" content="http://7ht.gitee.io/2018/03/27/python基础回顾（一）/index.html">
 <meta property="og:site_name" content="HonTu&#39;s Notes">
-<meta property="og:description" content="python基础回顾演变先有类，再出现对象，对象生存在作用域; 理论1、一切都皆为对象，一切皆为对象的引用。2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。 变量1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。3、我们通常将变量名代表变量，变量值">
+<meta property="og:description" content="python基础回顾演变先有类，再出现对象，对象生存在命名空间; 理论1、一切都皆为对象，一切皆为对象的引用。2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。 变量1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。3、我们通常将变量名代表变量，变量">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-28T04:18:07.721Z">
+<meta property="og:updated_time" content="2018-03-28T04:38:47.472Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python基础回顾（一）">
-<meta name="twitter:description" content="python基础回顾演变先有类，再出现对象，对象生存在作用域; 理论1、一切都皆为对象，一切皆为对象的引用。2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。 变量1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。3、我们通常将变量名代表变量，变量值">
+<meta name="twitter:description" content="python基础回顾演变先有类，再出现对象，对象生存在命名空间; 理论1、一切都皆为对象，一切皆为对象的引用。2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。 变量1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。3、我们通常将变量名代表变量，变量">
 
 
 
@@ -389,13 +389,13 @@
       
 
       
-        <h1 id="python基础回顾"><a href="#python基础回顾" class="headerlink" title="python基础回顾"></a>python基础回顾</h1><h3 id="演变"><a href="#演变" class="headerlink" title="演变"></a>演变</h3><p>先有类，再出现对象，对象生存在作用域;</p>
+        <h1 id="python基础回顾"><a href="#python基础回顾" class="headerlink" title="python基础回顾"></a>python基础回顾</h1><h3 id="演变"><a href="#演变" class="headerlink" title="演变"></a>演变</h3><p>先有类，再出现对象，对象生存在命名空间;</p>
 <h3 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h3><p>1、一切都皆为对象，一切皆为对象的引用。<br>2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。</p>
 <h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。<br>2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。<br>3、我们通常将变量名代表变量，变量值代表关联对象。</p>
-<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>1、类就是类型：object是祖先类型。<br>2、类型对象是自动生成的，类有且仅有一个实例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int、type(1)</span><br><span class="line">&gt;&gt;&gt; type(1) is int</span><br><span class="line">&gt;&gt;&gt; True</span><br></pre></td></tr></table></figure></p>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>1、类就是类型：object是祖先类型。<br>2、类型对象是自动生成的，有且仅有一个类型对象实例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int、type(1)</span><br><span class="line">&gt;&gt;&gt; type(1) is int</span><br><span class="line">&gt;&gt;&gt; True</span><br></pre></td></tr></table></figure></p>
 <h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>1、对象：是类的实例。<br>2、存活的实例对象都有唯一的id。<br>3、每个实例对象都持有所属类型的指针。<br>4、在内存中的标准头，包括引用计数cnt、类型type、其他等。</p>
 <h3 id="基础数据（对象）类型："><a href="#基础数据（对象）类型：" class="headerlink" title="基础数据（对象）类型："></a>基础数据（对象）类型：</h3><p>1、不可变数据（对象）类型：string、tuple、numbers（int、float）<br>2、可变数据（对象）类型：list、dict</p>
-<h3 id="名字空间-namespace"><a href="#名字空间-namespace" class="headerlink" title="名字空间(namespace)"></a>名字空间(namespace)</h3><p>1、名字（变量名）、目标对象。</p>
+<h3 id="名字空间-namespace"><a href="#名字空间-namespace" class="headerlink" title="名字空间(namespace)"></a>名字空间(namespace)</h3><p><strong>是从名称到对象的映射。</strong><br><strong>名字空间不是创建的，我们看到的字典实际上是从Fast区域复制的相关信息。</strong><br>1、名字（变量名）、目标对象。</p>
 <ul>
 <li>将变量（名字）与对象（内存里的）关联起来的容器。</li>
 <li>名字空间默认使用字典（dict）的数据结构。</li>
@@ -412,7 +412,8 @@
 <li>我们这里只考虑name(字符串):obj(目标对象)，不考虑深层次的ref；</li>
 </ul>
 <p>4、根据作用域的不同，分为全局名字空间和当前（局部）名字空间。—这里的当前更合适一些，当前是属于局部的；</p>
-<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><h4 id="理论-1"><a href="#理论-1" class="headerlink" title="理论"></a>理论</h4><p>1）根据可变对象和不可变对象;<br>2）根据只有赋值的时候,才会便能引用关系;<br>3）同一作用域内，名字总属于单一名字空间，不会因其执行顺序将其引用到不同名字空间。<br>4）默认形参存储在函数对象的<strong>defaults</strong>里。<br>5）<strong>内存空间：Fast(局部变量)、DEREF（外层嵌套，闭包）</strong></p>
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p><strong>Python 程序中可以直接访问一个命名空间的代码区域。</strong></p>
+<h4 id="理论-1"><a href="#理论-1" class="headerlink" title="理论"></a>理论</h4><p>1）根据可变对象和不可变对象;<br>2）根据只有赋值的时候,才会便能引用关系;<br>3）同一作用域内，名字总属于单一名字空间，不会因其执行顺序将其引用到不同名字空间。<br>4）默认形参存储在函数对象的<strong>defaults</strong>里。<br>5）<strong>内存空间：简单划分Fast(局部变量)和DEREF（外层嵌套，闭包）。</strong></p>
 <h4 id="局部作用域里的变量—使用dis-dis模块反汇编查看作用域"><a href="#局部作用域里的变量—使用dis-dis模块反汇编查看作用域" class="headerlink" title="局部作用域里的变量—使用dis.dis模块反汇编查看作用域"></a>局部作用域里的变量—使用dis.dis模块反汇编查看作用域</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">T1 = &quot;1&quot; #不可变对象</span><br><span class="line">T2 = []  #可变对象</span><br><span class="line">###############局部环境读取##################</span><br><span class="line">def change_string():</span><br><span class="line">    print(T1) # 读取了全局变量T1 ,按照LEGB的顺序</span><br><span class="line"></span><br><span class="line">###############局部环境创建##################</span><br><span class="line">def change_string():</span><br><span class="line">    T1 = &quot;dsd&quot; # 创建了局部变量T1 ,创建正常</span><br><span class="line"></span><br><span class="line">###############局部环境读取，创建##################</span><br><span class="line">def change_string():</span><br><span class="line">    print(T1)  # 报错  ---------局部环境读取</span><br><span class="line">               # 名字只属于一个名字空间，作用域解析根据LEGB就近原则，只属于当前局部作用域（局部名字空间）;</span><br><span class="line">               # 因此，出现歧义，报错UnboundLocalError</span><br><span class="line">               # 解决方法 可以把T1 使用global 声明为全局</span><br><span class="line">    T1 = &quot;111&quot; # 赋值  ----------局部环境读取</span><br></pre></td></tr></table></figure>
 <p>在一个作用域里面给一个变量赋值的时候，Python自动认为这个变量是这个作用域的本地变量，并屏蔽作用域外的同名的变量;</p>
 <h4 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">###############默认形参##################</span><br><span class="line">def change_list(a=[]):</span><br><span class="line">    &apos;&apos;&apos;</span><br><span class="line">    函数生成时，a的引用默认指向change_list的属性__defaults__,通过类的属性实现记录历史状态；</span><br><span class="line">    函数被调用时，如果传入参数，则a的引用指向传入的参数，发生引用变更；</span><br><span class="line">    &apos;&apos;&apos;</span><br><span class="line">    print(&quot;初始：&#123;&#125;&quot;.format(a))</span><br><span class="line">    a.append(&quot;5&quot;)</span><br><span class="line">    a.append(&quot;6&quot;)</span><br><span class="line">    a = []  # 赋值发生a的引用变更</span><br><span class="line">    print(&quot;然后：&#123;&#125;&quot;.format(a))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    print(change_list.__defaults__) # ([],)</span><br><span class="line">    change_list() # 初始：[]  然后：[]</span><br><span class="line">    change_list() # 初始：[&apos;5&apos;, &apos;6&apos;] 然后：[]</span><br><span class="line">    print(change_list.__defaults__) # ([&apos;5&apos;, &apos;6&apos;, &apos;5&apos;, &apos;6&apos;],)</span><br></pre></td></tr></table></figure>
