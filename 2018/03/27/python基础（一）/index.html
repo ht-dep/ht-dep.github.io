@@ -105,14 +105,14 @@
 
 <meta name="description" content="python基础回顾演变先有类，再出现对象，对象生存在作用域; 理论1、一切都皆为对象，一切皆为对象的引用。2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。 变量1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。3、我们通常将变量名代表变量，变量值">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python基础（一）">
+<meta property="og:title" content="python基础回顾（一）">
 <meta property="og:url" content="http://7ht.gitee.io/2018/03/27/python基础（一）/index.html">
 <meta property="og:site_name" content="HonTu&#39;s Notes">
 <meta property="og:description" content="python基础回顾演变先有类，再出现对象，对象生存在作用域; 理论1、一切都皆为对象，一切皆为对象的引用。2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。 变量1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。3、我们通常将变量名代表变量，变量值">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-27T15:26:30.384Z">
+<meta property="og:updated_time" content="2018-03-28T01:42:50.734Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python基础（一）">
+<meta name="twitter:title" content="python基础回顾（一）">
 <meta name="twitter:description" content="python基础回顾演变先有类，再出现对象，对象生存在作用域; 理论1、一切都皆为对象，一切皆为对象的引用。2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。 变量1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。3、我们通常将变量名代表变量，变量值">
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>python基础（一） | HonTu's Notes</title>
+  <title>python基础回顾（一） | HonTu's Notes</title>
   
 
 
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">python基础（一）</h1>
+          <h1 class="post-title" itemprop="name headline">python基础回顾（一）</h1>
         
 
         <div class="post-meta">
@@ -419,7 +419,7 @@
 <p>函数传入参数：意味着在函数的作用域内  创建了个局部变量，发生引用变更；<br>函数生成时，形参名字（变量）的引用默认指向函数的<strong>defaults</strong>属性；<br>函数被调用时，若传入参数，则形参名字的引用指向新传入的参数，若无，仍指向<strong>defaults</strong>；<br>函数每次调用，实际上是在新的局部作用域里，重新生成新的变量；</p>
 <h3 id="引用、浅copy、深copy"><a href="#引用、浅copy、深copy" class="headerlink" title="引用、浅copy、深copy"></a>引用、浅copy、深copy</h3><h4 id="理论-2"><a href="#理论-2" class="headerlink" title="理论"></a>理论</h4><p>1）根据可变对象和不可变对象;<br>2）根据只有赋值的时候,才会便能引用关系;</p>
 <h4 id="引用：指向同一个对象"><a href="#引用：指向同一个对象" class="headerlink" title="引用：指向同一个对象"></a>引用：指向同一个对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=5 b=a 就是引用，a、b指向同一个对象;</span><br></pre></td></tr></table></figure>
-<p>####2、浅copy：只复制对象内部的已有的名字引用;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">a=[&quot;1&quot;,2,[1,2,3]]</span><br><span class="line">b=a.copy()  # 只复制a已有对象的名字引用；就是b[0]指向a[0] ,b[1]指向a[1] ,b[2]指向a[2]</span><br><span class="line"></span><br><span class="line">########更改已有的名字引用,可变数据类型#########</span><br><span class="line">b[2].append(4) # b[2]更改后a[2]会保持一致；---b[2]是列表(可变类型),因为没有赋值，未发生引用变更</span><br><span class="line">print(a) # [&apos;1&apos;, 2, [1, 2, 3, 7]]</span><br><span class="line">print(b) # [&apos;1&apos;, 2, [1, 2, 3, 7]]</span><br><span class="line"></span><br><span class="line">########更改已有的名字引用,可变/不可变数据类型########</span><br><span class="line">b[2]=3  # b[2]更改后a[2]不会保持一致；---b[2]是数字(不可变类型),  因为赋值，发生了引用变更</span><br><span class="line">print(a)   # [&apos;1&apos;, 2, [1, 2, 3, 7]]</span><br><span class="line">print(b)   # [&apos;1&apos;, 2, 3]</span><br><span class="line"></span><br><span class="line">########更改未有的名字引用######################</span><br><span class="line">b.append(0)  # b添加了新的名字引用，a不会保持一致；---浅copy只能同步更改，copy的已有的名字引用</span><br><span class="line">print(a)   # [&apos;1&apos;, 2, [1, 2, 3, 7]]</span><br><span class="line">print(b)   # [&apos;1&apos;, 2, [1, 2, 3, 7], 0]</span><br></pre></td></tr></table></figure></p>
+<p>####2、浅copy：只复制对象内部的已有的名字引用;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">a=[&quot;1&quot;,2,[1,2,3]]</span><br><span class="line">b=a.copy()  # 只复制a已有对象的名字引用；就是b[0]指向a[0] ,b[1]指向a[1] ,b[2]指向a[2]</span><br><span class="line"></span><br><span class="line">########更改已有的名字引用,可变数据类型#########</span><br><span class="line">b[2].append(4) # b[2]更改后a[2]会保持一致；---b[2]是列表(可变类型),因为没有赋值，未发生引用变更</span><br><span class="line">print(a) # [&apos;1&apos;, 2, [1, 2, 3, 7]]</span><br><span class="line">print(b) # [&apos;1&apos;, 2, [1, 2, 3, 7]]</span><br><span class="line"></span><br><span class="line">########更改已有的名字引用,可变/不可变数据类型########</span><br><span class="line">b[2]=3  # b[2]更改后a[2]不会保持一致；---b[2]是数字(不可变类型),  因为赋值，发生了引用变更</span><br><span class="line">print(a)   # [&apos;1&apos;, 2, [1, 2, 3, 7]]</span><br><span class="line">print(b)   # [&apos;1&apos;, 2, 3]</span><br><span class="line"></span><br><span class="line">########更改未有的名字引用######################</span><br><span class="line">b.append(0)  # b添加了新的名字引用，a不会保持一致；---浅copy只能同步更改已有的名字引用</span><br><span class="line">print(a)   # [&apos;1&apos;, 2, [1, 2, 3, 7]]</span><br><span class="line">print(b)   # [&apos;1&apos;, 2, [1, 2, 3, 7], 0]</span><br></pre></td></tr></table></figure></p>
 <h4 id="深copy"><a href="#深copy" class="headerlink" title="深copy"></a>深copy</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from copy import deepcopy</span><br><span class="line">a=[&quot;1&quot;,2,[1,2,3]]</span><br><span class="line">c=deepcopy(a)  # 递归复制所有引用成员（而不是只复制引用）；c和a之间是独立的，没啥关系了，不会同步；</span><br></pre></td></tr></table></figure>
 <h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p><strong>闭包是指函数离开生成环境后，仍可记住并持续引用词法作用域的外部变量。</strong></p>
 <h4 id="理论-3"><a href="#理论-3" class="headerlink" title="理论"></a>理论</h4><p>1）根据可变对象和不可变对象;<br>2）根据只有赋值的时候,才会便能引用关系;<br>3）闭包引起的环境变量叫做自由变量，保存在函数对象的<strong>closure</strong>属性里，从内存的Fast转到DEREF里；</p>
@@ -450,11 +450,11 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2018/03/27/python基础（一）/">python基础（一）</a></p>
+  <p><span>本文标题:</span><a href="/2018/03/27/python基础（一）/">python基础回顾（一）</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 HT 的个人博客">HT</a></p>
   <p><span>发布时间:</span>2018年03月27日 - 23:03</p>
-  <p><span>最后更新:</span>2018年03月27日 - 23:03</p>
-  <p><span>原始链接:</span><a href="/2018/03/27/python基础（一）/" title="python基础（一）">http://7ht.gitee.io/2018/03/27/python基础（一）/</a>
+  <p><span>最后更新:</span>2018年03月28日 - 09:03</p>
+  <p><span>原始链接:</span><a href="/2018/03/27/python基础（一）/" title="python基础回顾（一）">http://7ht.gitee.io/2018/03/27/python基础（一）/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://7ht.gitee.io/2018/03/27/python基础（一）/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
@@ -508,6 +508,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/28/协程模块asyncio/" rel="prev" title="协程模块asyncio">
+                协程模块asyncio <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -585,7 +589,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-count">32</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -717,7 +721,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">40</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
