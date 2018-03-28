@@ -104,8 +104,8 @@
 <meta name="description" content="事务四大特性 1. 原子性 2. 一致性 3. 隔离性 4. 持久性   数据不一致 1. 丢失修改 2. 读脏数据 3. 不可重复读   隔离级别 1. 未提交读（READ UNCOMMITTED） 2. 提交读（READ COMMITTED） 3. 可重复读（REPEATABLE READ） 4. 可串行化（SERIALIXABLE）   可串行化调度 封锁类型 封锁粒度 封锁协议 三级封">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库系统原理">
-<meta property="og:url" content="http://7ht.gitee.io/2018/03/16/数据库系统原理/index.html">
+<meta property="og:title" content="数据库系统原理（转）">
+<meta property="og:url" content="http://7ht.gitee.io/2018/03/16/数据库系统原理（转）/index.html">
 <meta property="og:site_name" content="HonTu&#39;s Notes">
 <meta property="og:description" content="事务四大特性 1. 原子性 2. 一致性 3. 隔离性 4. 持久性   数据不一致 1. 丢失修改 2. 读脏数据 3. 不可重复读   隔离级别 1. 未提交读（READ UNCOMMITTED） 2. 提交读（READ COMMITTED） 3. 可重复读（REPEATABLE READ） 4. 可串行化（SERIALIXABLE）   可串行化调度 封锁类型 封锁粒度 封锁协议 三级封">
 <meta property="og:locale" content="zh-CN">
@@ -123,9 +123,9 @@
 <meta property="og:image" content="https://latex.codecogs.com/gif.latex?Sname,Tname->Cname">
 <meta property="og:image" content="https://latex.codecogs.com/gif.latex?Sname,Tname->Grade">
 <meta property="og:image" content="https://latex.codecogs.com/gif.latex?Tname->Cname">
-<meta property="og:updated_time" content="2018-03-16T11:22:43.713Z">
+<meta property="og:updated_time" content="2018-03-28T03:27:24.962Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据库系统原理">
+<meta name="twitter:title" content="数据库系统原理（转）">
 <meta name="twitter:description" content="事务四大特性 1. 原子性 2. 一致性 3. 隔离性 4. 持久性   数据不一致 1. 丢失修改 2. 读脏数据 3. 不可重复读   隔离级别 1. 未提交读（READ UNCOMMITTED） 2. 提交读（READ COMMITTED） 3. 可重复读（REPEATABLE READ） 4. 可串行化（SERIALIXABLE）   可串行化调度 封锁类型 封锁粒度 封锁协议 三级封">
 <meta name="twitter:image" content="https://latex.codecogs.com/gif.latex?S(Sno,Cname,Sname,Sdept,Mname)">
 
@@ -134,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="http://7ht.gitee.io/2018/03/16/数据库系统原理/"/>
+  <link rel="canonical" href="http://7ht.gitee.io/2018/03/16/数据库系统原理（转）/"/>
 
 
 
@@ -144,7 +144,7 @@
   };
 </script>
 
-  <title>数据库系统原理 | HonTu's Notes</title>
+  <title>数据库系统原理（转） | HonTu's Notes</title>
   
 
 
@@ -311,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://7ht.gitee.io/2018/03/16/数据库系统原理/">
+    <link itemprop="mainEntityOfPage" href="http://7ht.gitee.io/2018/03/16/数据库系统原理（转）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HT">
@@ -328,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据库系统原理</h1>
+          <h1 class="post-title" itemprop="name headline">数据库系统原理（转）</h1>
         
 
         <div class="post-meta">
@@ -609,12 +609,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2018/03/16/数据库系统原理/">数据库系统原理</a></p>
+  <p><span>本文标题:</span><a href="/2018/03/16/数据库系统原理（转）/">数据库系统原理（转）</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 HT 的个人博客">HT</a></p>
   <p><span>发布时间:</span>2018年03月16日 - 18:03</p>
-  <p><span>最后更新:</span>2018年03月16日 - 19:03</p>
-  <p><span>原始链接:</span><a href="/2018/03/16/数据库系统原理/" title="数据库系统原理">http://7ht.gitee.io/2018/03/16/数据库系统原理/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://7ht.gitee.io/2018/03/16/数据库系统原理/"  aria-label="复制成功！"></i></span>
+  <p><span>最后更新:</span>2018年03月28日 - 11:03</p>
+  <p><span>原始链接:</span><a href="/2018/03/16/数据库系统原理（转）/" title="数据库系统原理（转）">http://7ht.gitee.io/2018/03/16/数据库系统原理（转）/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://7ht.gitee.io/2018/03/16/数据库系统原理（转）/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
 </div>
@@ -664,8 +664,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/16/计算机操作系统/" rel="next" title="计算机操作系统">
-                <i class="fa fa-chevron-left"></i> 计算机操作系统
+              <a href="/2018/03/16/计算机操作系统（转）/" rel="next" title="计算机操作系统（转）">
+                <i class="fa fa-chevron-left"></i> 计算机操作系统（转）
               </a>
             
           </div>
@@ -674,8 +674,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/16/分布式基础/" rel="prev" title="分布式基础">
-                分布式基础 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/16/分布式基础（转）/" rel="prev" title="分布式基础（转）">
+                分布式基础（转） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
