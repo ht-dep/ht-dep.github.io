@@ -103,17 +103,17 @@
   <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="python基础回顾演变先有类，再出现对象，对象生存在命名空间; 理论1、一切都皆为对象，一切皆为对象的引用。2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。 变量1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。3、我们通常将变量名代表变量，变量">
+<meta name="description" content="python基础回顾演变先有类，再出现对象，对象生存在内存里; 理论1、一切都皆为对象，一切皆为对象的引用。2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。 变量1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。3、我们通常将变量名代表变量，变量值">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python基础回顾（一）">
 <meta property="og:url" content="http://7ht.gitee.io/2018/03/27/python基础回顾（一）/index.html">
 <meta property="og:site_name" content="HonTu&#39;s Notes">
-<meta property="og:description" content="python基础回顾演变先有类，再出现对象，对象生存在命名空间; 理论1、一切都皆为对象，一切皆为对象的引用。2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。 变量1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。3、我们通常将变量名代表变量，变量">
+<meta property="og:description" content="python基础回顾演变先有类，再出现对象，对象生存在内存里; 理论1、一切都皆为对象，一切皆为对象的引用。2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。 变量1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。3、我们通常将变量名代表变量，变量值">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-28T04:38:47.472Z">
+<meta property="og:updated_time" content="2018-03-28T04:39:46.034Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python基础回顾（一）">
-<meta name="twitter:description" content="python基础回顾演变先有类，再出现对象，对象生存在命名空间; 理论1、一切都皆为对象，一切皆为对象的引用。2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。 变量1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。3、我们通常将变量名代表变量，变量">
+<meta name="twitter:description" content="python基础回顾演变先有类，再出现对象，对象生存在内存里; 理论1、一切都皆为对象，一切皆为对象的引用。2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。 变量1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。3、我们通常将变量名代表变量，变量值">
 
 
 
@@ -389,7 +389,7 @@
       
 
       
-        <h1 id="python基础回顾"><a href="#python基础回顾" class="headerlink" title="python基础回顾"></a>python基础回顾</h1><h3 id="演变"><a href="#演变" class="headerlink" title="演变"></a>演变</h3><p>先有类，再出现对象，对象生存在命名空间;</p>
+        <h1 id="python基础回顾"><a href="#python基础回顾" class="headerlink" title="python基础回顾"></a>python基础回顾</h1><h3 id="演变"><a href="#演变" class="headerlink" title="演变"></a>演变</h3><p>先有类，再出现对象，对象生存在内存里;</p>
 <h3 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h3><p>1、一切都皆为对象，一切皆为对象的引用。<br>2、只有对名字（变量名-变量）赋值的时候，才会变更引用关系。</p>
 <h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>1、变量是用一个变量名表示，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头。<br>2、变量是在内存中开辟的一个空间，实际表示是name(字符串):name.ref(内存地址)。<br>3、我们通常将变量名代表变量，变量值代表关联对象。</p>
 <h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>1、类就是类型：object是祖先类型。<br>2、类型对象是自动生成的，有且仅有一个类型对象实例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int、type(1)</span><br><span class="line">&gt;&gt;&gt; type(1) is int</span><br><span class="line">&gt;&gt;&gt; True</span><br></pre></td></tr></table></figure></p>
